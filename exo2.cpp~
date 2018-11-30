@@ -4,13 +4,11 @@
 
 using namespace std;
 
-const unsigned KHARUHI (1);
-
 unsigned abso (const int x) {
     return (x < 0) ? -x : x;
 }
 
-int decalageDeCePays (const unsigned pays, const vector<pair<unsigned, int>> & decalageParPays) {
+int decalageDuPays (const unsigned pays, const vector<pair<unsigned, int>> & decalageParPays) {
     for (pair<unsigned, int> paire : decalageParPays)
         if (paire.first == pays)
             return paire.second;
@@ -20,8 +18,7 @@ int decalageDeCePays (const unsigned pays, const vector<pair<unsigned, int>> & d
 int main() {
 
     vector<unsigned> decalages;
-    unsigned decalageHaruhi (0);
-    unsigned decalageJoseph (0);
+    unsigned decalage;
 
     pair<unsigned, int> decalageDuPays;
     vector<pair<unsigned, int>> decalageParPays;
@@ -44,13 +41,12 @@ int main() {
     for (unsigned i (0); i < nbVoyages; ++i) {
         unsigned perso, pays;
         cin >> perso >> pays;
-        (perso == KHARUHI) ? decalageHaruhi = abso (decalageDeCePays (pays, decalageParPays)) : decalageJoseph = abso (decalageDeCePays (pays, decalageParPays));
-        decalages.push_back(decalageHaruhi + decalageJoseph);
-      }
+        decalage += abso (decalageDuPays (pays));
+        decalages.push_back(decalage);
+    }
 
     for (unsigned dec : decalages)
         cout << dec << endl;
 
     return 0;
 }
-

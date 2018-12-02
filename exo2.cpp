@@ -5,6 +5,7 @@
 using namespace std;
 
 const unsigned KHARUHI (1);
+const unsigned KJOSEPH (2);
 
 unsigned abso (const int x) {
     return (x < 0) ? -x : x;
@@ -44,7 +45,12 @@ int main() {
     for (unsigned i (0); i < nbVoyages; ++i) {
         unsigned perso, pays;
         cin >> perso >> pays;
-        (perso == KHARUHI) ? decalageHaruhi = abso (decalageDeCePays (pays, decalageParPays)) : decalageJoseph = abso (decalageDeCePays (pays, decalageParPays));
+        if (perso == KHARUHI) {
+		 decalageHaruhi = abso (decalageDeCePays (pays, decalageParPays));
+	}
+	else if (perso == KJOSEPH) {
+		decalageJoseph = abso (decalageDeCePays (pays, decalageParPays));
+	}
         decalages.push_back(decalageHaruhi + decalageJoseph);
       }
 
